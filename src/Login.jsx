@@ -8,18 +8,23 @@ import {BASE_URL} from "./constants"
 const Login = () => {
   const [emailId, setEmailId] = useState("srk@gmail.com");
   const [password, setPassword] = useState("Srknew@786");
+  const [errMassage, setErrMassage]=useState("")
   const dispatch=useDispatch()
   const navigate=useNavigate()
 
   const handleLogin = async () => {
     
+    try{
     const res = await axios.post(BASE_URL+"/login", {
       emailId,
       password,
     },{withCredentials: true}); //for token
     dispatch(addUser(res.data))
     navigate("/")
-    console.log(res.data)
+  }catch(err){
+    console.log(err)
+    setErrMassage(err.message)
+  }
   };
   return (
     <div className="flex justify-center my-10">
@@ -44,7 +49,7 @@ const Login = () => {
               className="input"
               placeholder="Type here "
             />
-
+             <p className="text-red-700 font-bold">{errMassage}</p>
             <div className="flex justify-center pt-2">
               <button className="btn bg-slate-800"
               onClick={handleLogin}
