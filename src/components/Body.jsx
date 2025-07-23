@@ -3,8 +3,8 @@ import NavBar from "./NavBar";
 import Footer from "./Footer";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { BASE_URL } from "./constants";
-import { addUser } from "./utils/userSlice";
+import { BASE_URL } from "../utils/constants";
+import { addUser } from "../utils/userSlice";
 import { useEffect } from "react";
 
 const Body = () => {
@@ -13,7 +13,7 @@ const Body = () => {
   const userData= useSelector((store)=>store.user)
 
   const fetchUser = async () => {
-    if(userData==null) return //do not make api call again for profile if login
+    if(userData) return //do not make api call again for profile if login
     try {
       const res = await axios.get(BASE_URL + "/profile/view", {
         withCredentials: true,
