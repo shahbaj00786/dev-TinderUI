@@ -10,10 +10,10 @@ import { useEffect } from "react";
 const Body = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const userData= useSelector((store)=>store.user)
+  const userData= useSelector((store)=>store.user) 
 
   const fetchUser = async () => {
-    if(userData) return //do not make api call again for profile if login
+    if(userData) return //do not make api call again for profile if login...If user already exists, no need to fetch again
     try {
       const res = await axios.get(BASE_URL + "/profile/view", {
         withCredentials: true,
@@ -22,7 +22,7 @@ const Body = () => {
     } catch (err) {
       err.status === 401 ? navigate("/login") : console.log(err);
     }
-  };
+  }
 
   useEffect(() => {
     //call only once when page reloads

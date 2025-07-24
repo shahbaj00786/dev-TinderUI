@@ -17,17 +17,14 @@ const EditProfile = ({ user }) => {
   const [showToast, setShowToast] = useState(false);
 
   const saveProfile = async () => {
-    console.log("clicked");
+    //console.log("clicked");
     setError("");
 
     const res = await axios.patch(
       BASE_URL + "/profile/update",
-      { firstName, lastName, about },
+      { firstName, lastName, about, skills, photoUrl, about },
       {
         withCredentials: true,
-        headers: {
-          "Content-Type": "application/json", // Explicit content-type
-        },
       }
     );
     dispatch(addUser(res?.data?.data));
