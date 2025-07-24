@@ -7,6 +7,7 @@ import { addConnection } from "../utils/connectionSlice";
 const Connections = () => {
   const dispatch = useDispatch();
   const connections = useSelector((store) => store.connection);
+
   const fetchConnections = async () => {
     const res = await axios(BASE_URL + "/user/connections", {
       withCredentials: true,
@@ -27,11 +28,11 @@ const Connections = () => {
     <div className="text-center my-10">
       <h1 className="text-bold text-white text-3xl">Connections</h1>
       {connections.map((connection) => {
-        const { firstName, lastName, photoUrl, age, gender, about } =
+        const {_id,firstName, lastName, photoUrl, age, gender, about } =
           connection;
 
         return (
-          <div className="m-4 p-4 bg-slate-950 rounded-lg  w-1/3 flex mx-auto">
+          <div key={_id} className="m-4 p-4 bg-slate-950 rounded-lg  w-1/3 flex mx-auto">
             <div>
               <img
                 className="w-20 h-20 rounded-full"
