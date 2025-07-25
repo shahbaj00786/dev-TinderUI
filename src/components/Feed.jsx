@@ -28,14 +28,14 @@ const Feed = () => {
   }, []);
 
   if(!feed) return;
-  if(feed.length <= 0) return <h1 className="flex justify-center my-4 font-bold">no User found</h1>
+  if(feed.length <= 0) return <h1 className="flex justify-center my-4 font-bold">No User found</h1>
   return (
     feed && (
       <div className="flex justify-center py-20">
         <UserCard user={feed[0]} />
       </div>
     )
-  );
-};
+  )
+}
 
 export default Feed;

@@ -13,7 +13,7 @@ const UserCard = ({ user }) => {
       {},
       { withCredentials: true }
     );
-    dispatch(removeFeed(userId) )
+    dispatch(removeFeed(userId))
   };
 
   return (

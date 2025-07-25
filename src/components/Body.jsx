@@ -8,28 +8,28 @@ import { addUser } from "../utils/userSlice";
 import { useEffect } from "react";
 
 const Body = () => {
-  // const dispatch = useDispatch();
-  // const navigate = useNavigate();
-  // const userData= useSelector((store)=>store.user) 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const userData= useSelector((store)=>store.user) 
 
-  // const fetchUser = async () => {
-  //   if(userData) return //do not make api call again for profile if login...If user already exists, no need to fetch again
-  //   try {
-  //     const res = await axios.get(BASE_URL + "/profile/view", {
-  //       withCredentials: true,
-  //     });
-  //     dispatch(addUser(res.data));
-  //   } catch (err) {
-  //     err.status === 401 ? navigate("/login") : console.log(err);
-  //   }
-  // }
+  const fetchUser = async () => {
+    if(userData) return //do not make api call again for profile if login...If user already exists, no need to fetch again
+    try {
+      const res = await axios.get(BASE_URL + "/profile/view", {
+        withCredentials: true,
+      });
+      dispatch(addUser(res.data));
+    } catch (err) {
+      err.status === 401 ? navigate("/login") : console.log(err);
+    }
+  }
 
-  // useEffect(() => {
-  //   //call only once when page reloads
-  //   fetchUser();
-  // }, []);
-
-  return (
+  useEffect(() => {
+    //call only once when page reloads
+    fetchUser();
+  }, []);
+ 
+return (
     <div>
       <NavBar />
       <Outlet />
