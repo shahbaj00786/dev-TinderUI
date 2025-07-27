@@ -26,9 +26,10 @@ const Premium = () => {
       {  memberShipType: type },
       { withCredentials: true }
     );
+    console.log(order)
  
-    const {keyId}=order.data
-    const { amount,  currency, notes, orderId } = order.data.order;
+  
+    const {keyId, amount,  currency, notes, orderId } = order.data;
 
     var options = {
       key: keyId,
